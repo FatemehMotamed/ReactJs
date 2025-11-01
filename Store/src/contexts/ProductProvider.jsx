@@ -42,7 +42,7 @@ function ProductProvider({children}) {
             dispatch({type: "initial data", payload: req})
             dispatch({type: "set products", payload: req})
             dispatch({type: "data is load"})
-            console.log(req,"+++")
+            console.log(req,"++++++++++")
         }).catch((error)=>{
             console.log(error.message)
             dispatch({type: "data not load"})

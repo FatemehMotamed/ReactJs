@@ -1,39 +1,21 @@
 
-import { IoBagCheck } from "react-icons/io5";
+
 import { RiListCheck2 } from "react-icons/ri";
+
 import { Link } from 'react-router-dom';
 import {  shortenText } from "../helpers/helper";
+import NumberProduct from "./NumberProduct";
 import { useCart } from "../contexts/CartProvider";
 import { useState } from "react";
 function ProductCard({product}) {
   const {id, title, price, image} = product
-  const [number, setNumber] = useState(0)
-  const {state, dispatch} = useCart()
-  
-  const changeNumber = (event)=>{
-    setNumber(event.target.value)
-  }
-  const decNumber = ()=>{
-    const newNumber =number-1
-    if (newNumber<0){
-      setNumber(0)
-      return
-    }
-    else{
+  const {state,dispatch} = useCart()
+  // const [number, setNumber] = useState(0)
+  // const number = state.cartProducts.filter((item)=>(item.product.id == id ? number=item.number : number=0))
 
-      setNumber(newNumber)
-      
-    }   
-    // const data = addToCart(state.ProductCard, product,newNumber)
-    dispatch({type:"ADD PRODUCT", payload: {product, number:newNumber}})
-    console.log(state)
-  }
-  const addProducct = ()=>{
-    const newNumber =number+1
-    setNumber(newNumber)
-    dispatch({type:"ADD PRODUCT", payload: {product, number:newNumber}})
-    console.log(state,"***")
-  }
+  const foundItem = state.cartProducts.find((item) => item.product.id === id);
+  const number = foundItem ? foundItem.number : 0
+  console.log(number,"&&&&&&&&&&&&&&&&&&&&&")
   return (
     <div style={{maxWidth:"180px"}} >
 
@@ -41,18 +23,11 @@ function ProductCard({product}) {
         <p>{shortenText(title)}</p>
         <p>${price}</p>
         <Link to={`/product/${id}`}><RiListCheck2 color='red'/></Link>
-        {number>0 ?
         
-        <div style={{display:"flex"}}>
-          <button onClick={addProducct}>+</button>
-          <input type="text" style={{width:"20px"}} value={number} onChange={changeNumber}/>
-          <button onClick={decNumber}>-</button>
-        </div>
+        
+        <NumberProduct product={product} number={number}  />
 
-        :
-        (<IoBagCheck onClick={addProducct} />)
         
-        }
 
         {state.cartProducts.map((item)=>(<p key={item.product.id}>Number:{item.number}</p>))}
         

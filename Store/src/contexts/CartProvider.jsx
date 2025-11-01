@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react'
-import { addToCart } from '../helpers/helper'
+import { addToCart, calculateTotal, removeFromCart } from '../helpers/helper'
 const initialState = {
   cartProducts : [],
   totalCount:0,
@@ -13,17 +13,35 @@ const reducer = (state, action)=>{
       const {product, number} = action.payload
       const data = addToCart(state.cartProducts, product, number )
 
-      const totalCount = data.reduce((sum, item) => sum + item.number, 0);
-      const totalPrice = data.reduce((sum, item) => sum + item.product.price * item.number, 0);
-      
-      return {
+      const {totalCount,totalPrice} = calculateTotal (data)
+      const newState = {
         cartProducts: data,
         totalCount,
         totalPrice,
         checkout:false
         
-      } 
+      }
+
+      console.log(newState,"**********")
+      
+      return newState
     }
+
+    case "DELETE PRODUCT":
+      const data = removeFromCart(state.cartProducts, action.payload)
+      const {totalCount,totalPrice} = calculateTotal (data)
+      const newState = {
+        cartProducts: data,
+        totalCount,
+        totalPrice,
+        checkout:false
+        
+      }
+
+      console.log(newState,"**********")
+      
+      return newState
+
 
     default:
       throw new Error("Invalid Action")
