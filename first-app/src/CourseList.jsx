@@ -1,5 +1,5 @@
 import CourseCard from "./CourseCard";
-// import './CourseList.css'
+import './CourseList.css'
 import styles from "./courseList.module.css"
 
 function CourseList(){

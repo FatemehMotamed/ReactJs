@@ -2,7 +2,10 @@ import React from 'react'
 
 function TestComponent() {
   return (
-    <div>TestComponent</div>
+    <>
+    {4*5}<br></br>
+    {Math.round(Math.random() * 100)}
+    </>
   )
 }
 

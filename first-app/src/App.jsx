@@ -6,25 +6,29 @@ import CourseList from './CourseList'
 import Banner from './Banner'
 import Counter from './Counter'
 import Form from './Form'
+import TestComponent from './TestComponent'
 function App() {
 const name="fatemeh"
 
   return (
    
     <>
-    {/* <Form></Form> */}
-    {/* <Counter></Counter> */}
+    <TestComponent />
     {/* <Header></Header> */}
 
-    <Banner title="courses" description="website" number={5000} name={name}></Banner>
+    {/* <h3>Cources</h3>
+    <CourseList></CourseList> */}
+    
+    {/* <Banner title="courses" description="website" number={5000} name={name}></Banner> */}
+    {/* <Form></Form> */}
+    {/* <Counter></Counter> */}
+
 
     
     {/* <div>main css</div>
     <FirstComponent></FirstComponent>
     <p>{4*5}</p> */}
 
-    {/* <h3>Cources</h3>
-    <CourseList></CourseList> */}
     </>
 
   )
