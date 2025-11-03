@@ -12,19 +12,21 @@ const name="fatemeh"
   return (
    
     <>
-    {/* <Form></Form> */}
-    {/* <Counter></Counter> */}
     {/* <Header></Header> */}
 
+    {/* <h3>Cources</h3>
+    <CourseList></CourseList> */}
+    
     <Banner title="courses" description="website" number={5000} name={name}></Banner>
+    {/* <Form></Form> */}
+    {/* <Counter></Counter> */}
+
 
     
     {/* <div>main css</div>
     <FirstComponent></FirstComponent>
     <p>{4*5}</p> */}
 
-    {/* <h3>Cources</h3>
-    <CourseList></CourseList> */}
     </>
 
   )

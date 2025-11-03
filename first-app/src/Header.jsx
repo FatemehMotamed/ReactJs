@@ -8,7 +8,7 @@ function Header(){
    return (
     <header>
         {/* { isLogin ? <button>Login</button> : <button>Dashboard</button>} */}
-        { isLogin ? (<><button>Dashboard</button> <button>cart</button> </>) : <button>Login</button>}
+        { isLogin ? <><button>Dashboard</button> <button>cart</button> </> : <button>Login</button>}
         {isLogin && <button>basket</button>}
     </header>
      
