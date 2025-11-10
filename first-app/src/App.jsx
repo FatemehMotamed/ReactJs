@@ -14,16 +14,16 @@ const name="fatemeh"
    
     <>
 
-    <TestComponent />
+    {/* <TestComponent /> */}
 
-    {/* <Header></Header> */}
+    <Header></Header>
 
     {/* <h3>Cources</h3>
     <CourseList></CourseList> */}
     
     {/* <Banner title="courses" description="website" number={5000} name={name}></Banner> */}
-    {/* <Form></Form> */}
     {/* <Counter></Counter> */}
+    {/* <Form></Form> */}
 
 
     

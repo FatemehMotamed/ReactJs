@@ -71,7 +71,7 @@ async function placeOrderAsync(productId, amount, email) {
     const confirmationResult = await sendConfirmation(email);
     console.log(confirmationResult);
     
-    return '🎉 سفارش با موفقیت تکمیل شد!';
+    return ' سفارش با موفقیت تکمیل شد!';
   } catch (error) {
     throw new Error(`خطا در سفارش: ${error}`);
   }
