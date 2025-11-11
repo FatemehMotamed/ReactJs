@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+}
+.books{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+.booksEmpty{
+width: 100%;
+margin-left: auto;
+margin-right: auto;
+}
+.favourite{
+    width: 25%;
+    background-color: rgb(85, 85, 183);
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 10px;
+    visibility: visible;
+    
+}
+
+.emptyFav{
+    visibility: hidden;
+    
+}

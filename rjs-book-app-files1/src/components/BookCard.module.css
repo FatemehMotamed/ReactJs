@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    gap:20px;
+    background-color: rgb(49, 44, 44);
+    border-radius: 20px;
+    margin-top: 10px;
+    width: 90%;
+    color: rgba(255, 255, 255, 0.79);
+    padding: 20px;
+}
+.spans{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 12px;
+    
+}
+img{
+    width: 10%;
+}
+.heartOff{
+    /* color: red; */
+    margin-left: auto; 
+}
+.heartOn{
+    /* color: red; */
+    margin-left: auto;
+    color: red; 
+}
