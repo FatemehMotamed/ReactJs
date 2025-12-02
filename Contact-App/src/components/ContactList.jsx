@@ -2,7 +2,6 @@ import ContactItem from "./ContactItem"
 import styles from "./ContactList.module.css"
 const ContactList = ({contacts,  removeHandler}) => {
 
-   // بررسی‌های ایمنی
    if (!contacts) {
     return <div className={styles.empty}>در حال دریافت اطلاعات...</div>;
   }

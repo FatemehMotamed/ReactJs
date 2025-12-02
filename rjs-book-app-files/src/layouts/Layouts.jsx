@@ -5,7 +5,7 @@ function Layouts({children}) {
     <>
         <header className={styles.header}>
             <h1>Book App</h1>
-            <p>Botostart| React.js full course</p>
+            <p> React.js full course</p>
 
         </header>
 

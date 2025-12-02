@@ -1,75 +1,75 @@
 
 import TableRow from "./TableRow"
-import { ColorRing } from 'react-loader-spinner'
+import { Blocks } from 'react-loader-spinner'
 import style from './TableCoin.module.css'
 import Pagination from "./Pagination"
 import { getCoinsUrl } from "../../services/cryptoApi"
 import { useEffect, useState } from "react"
 
 
-function TableCoin({setModalOn, setModalCoin,coinType}) {
+function TableCoin({ setModalOn, setModalCoin, coinType }) {
   const [coinData, setCoinData] = useState([])
   const [page, setPage] = useState(1)
   const [isLoad, setIsLoad] = useState(false)
 
-  useEffect(()=>{
-    const getCoin = async ()=>{
-        setIsLoad(false)
-        await fetch(getCoinsUrl(page,coinType)).then(async (res)=>{
+  useEffect(() => {
+    const getCoin = async () => {
+      setIsLoad(false)
+      await fetch(getCoinsUrl(page, coinType)).then(async (res) => {
         const data = await res.json()
         // console.log(data)
         setCoinData(data)
         setIsLoad(true)
-    }).catch((error)=>{
+      }).catch((error) => {
         console.log(error)
         setCoinData([])
-    })        
-    } 
+      })
+    }
     getCoin()
-  },[page,coinType])
+  }, [page, coinType])
 
   return (
-      isLoad ? (
+    isLoad ? (
       <div className={style.container}>
-      
-      <table className={style.table}>
-        <thead>
-          <tr>
+
+        <table className={style.table}>
+          <thead>
+            <tr>
               <th>Coin</th>
               <th>Name</th>
               <th>Price</th>
               <th>24h</th>
               <th>Total Volume</th>
               <th></th>
-    
-          </tr>
 
-        </thead>
-        <tbody>
+            </tr>
 
-          { coinData &&
-          coinData.map((coin)=>(
-            <TableRow key={coin.id} coin={coin} setModalOn={setModalOn} setModalCoin={setModalCoin} />
-          )
-          )
-          }
-        </tbody>
-      </table>
-      <Pagination page={page} setPage={setPage} />
+          </thead>
+          <tbody>
+
+            {coinData &&
+              coinData.map((coin) => (
+                <TableRow key={coin.id} coin={coin} setModalOn={setModalOn} setModalCoin={setModalCoin} />
+              )
+              )
+            }
+          </tbody>
+        </table>
+        <Pagination page={page} setPage={setPage} />
 
       </ div>
-      )
-    : 
-    (<ColorRing
-        visible={true}
+    )
+      :
+      (<Blocks
         height="80"
         width="80"
-        ariaLabel="color-ring-loading"
+        color="#4fa94d"
+        ariaLabel="blocks-loading"
         wrapperStyle={{}}
-        wrapperClass="color-ring-wrapper"
-        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-        /> )
-    
+        wrapperClass="blocks-wrapper"
+        visible={true}
+      />)
+
   )
 }
 

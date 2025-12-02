@@ -1,20 +1,71 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 
-function Counter() {
-    const [count,setCount] = useState(0)
-    useEffect(()=>{
-        const timer = setInterval(()=>{
-            setCount((count)=>count+1)
-        }, 1000)
+function Users() {
+    const [users, setUsers] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
+    const [id, setId] = useState("")
 
-        return ()=>{
-            clearInterval(timer)
+    useEffect(() => {
+        if (!id) {
+            setUsers([])
+            return
         }
 
-    }, [count])
-  return (
-    <div>Counter: {count} </div>
-  )
+        const userController = new AbortController()
+        let timeoutId
+
+        const getUsers = async () => {
+            setError(null)
+            setIsLoading(true)
+
+            try {
+                const res = await fetch(`https://jsonplaceholder.typicode.com/photos/${id}`,
+                    { signal: userController.signal })
+                
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+                
+                const data = await res.json()
+                
+                if (!userController.signal.aborted) {
+                    setUsers([data])
+                    setIsLoading(false)
+                }
+
+            } catch (error) {
+                if (error.name !== 'AbortError' && !userController.signal.aborted) {
+                    setError(error.message)
+                    setIsLoading(false)
+                }
+            }
+        }
+
+        // Debounce برای جلوگیری از requestهای زیاد
+        timeoutId = setTimeout(getUsers, 500)
+
+        return () => {
+            clearTimeout(timeoutId)
+            userController.abort()
+        }
+
+    }, [id])
+
+    const changeHandler = (event) => {
+        setId(event.target.value)
+    }
+
+    return (
+        <div>
+            <input type="text" onChange={changeHandler} value={id} placeholder="Enter user ID" />
+
+            {isLoading && <h3>Loading...</h3>}
+            {error && <p>Error: {error}</p>}
+
+            {!isLoading && !error && users.map((user) => (
+                <li key={user.id}>{user.title}</li>
+            ))}
+        </div>
+    )
 }
 
-export default Counter
+export default Users

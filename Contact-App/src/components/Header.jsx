@@ -7,9 +7,9 @@ const Header = ()=> {
         <div className={styles.subtitle}>
 
             <div className={styles.badge}>
-                <a href="https://botostart.ir">Botostart</a>
+                <a href="https://getbootstrap.com/">Bootstrap</a>
             </div>
-            <div className={styles.title}>| React.js Full Course</div>
+            <div className={styles.title}>| React.js</div>
 
         </div>
         
