@@ -29,7 +29,7 @@ function ProductCard({product}) {
 
         
 
-        {state.cartProducts.map((item)=>(<p key={item.product.id}>Number:{item.number}</p>))}
+        {/* {state.cartProducts.map((item)=>(<p key={item.product.id}>Number:{item.number}</p>))} */}
         
 
     </div>

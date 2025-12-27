@@ -1,7 +1,12 @@
-import  { useCallback, useMemo, useState } from 'react'
+import  { useCallback, useEffect, useMemo, useState } from 'react'
 import ChildComponent from './ChildComponent'
+import { useTitle } from '../hooks/useTitle'
 
 function MemoComponent() {
+  // useEffect(()=>{
+  //         document.title = "memo"
+  //     },[])
+  useTitle("memo")
   const [counter, setCounter] = useState(0)
   const [number, setNumber] = useState(0)
 

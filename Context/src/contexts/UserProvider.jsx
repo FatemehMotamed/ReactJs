@@ -9,7 +9,7 @@ function UserProvider({children}) {
         {id:2, name:"mohammad"}
       ])
   return (
-     <UserContext.Provider value={{users, setUsers, author: "azimi"}}>
+     <UserContext.Provider value={{users, setUsers, author: "fatemeh"}}>
         {children}
     </UserContext.Provider>
   )

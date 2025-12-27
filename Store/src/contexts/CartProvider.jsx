@@ -27,7 +27,7 @@ const reducer = (state, action)=>{
       return newState
     }
 
-    case "DELETE PRODUCT":
+    case "DELETE PRODUCT":{
       const data = removeFromCart(state.cartProducts, action.payload)
       const {totalCount,totalPrice} = calculateTotal (data)
       const newState = {
@@ -37,12 +37,13 @@ const reducer = (state, action)=>{
         checkout:false
         
       }
+    
 
       console.log(newState,"**********")
       
       return newState
 
-
+    }
     default:
       throw new Error("Invalid Action")
 
