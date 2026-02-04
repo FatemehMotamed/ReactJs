@@ -1,0 +1,6 @@
+npm install @apollo/client@latest graphql rxjs
+
+npm install react-router-dom
+
+npm install axios
+
