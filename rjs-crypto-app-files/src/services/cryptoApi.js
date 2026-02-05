@@ -11,6 +11,7 @@ const getChartUrl = (id, coinType)=> {
  return `${BASE_URL}/coins/${id}/market_chart?vs_currency=${coinType}&days=1&x_cg_demo_api_key=${API_KEY}`
 }
 
+
 export {getCoinsUrl, getSearchUrl, getChartUrl}
 
 // https://api.coingecko.com/api/v3//coins/markets?vs_currency=usd&&x_cg_demo_api_key=CG-DrPBXmTh64buLnFWAvbVnw3a&per_page=10&page=1
